@@ -10,9 +10,11 @@ h1 {
     padding-top: 0;
   }
   nav a {
+    height: 30px;
+    line-height: 30px;
     padding: 5px 10px;
     text-decoration: none;
-    margin-top: 10px;
+    margin: 10px 10px 0 0;
     display: inline-block;
     background-color: #eee;
     border-radius: 4px;
