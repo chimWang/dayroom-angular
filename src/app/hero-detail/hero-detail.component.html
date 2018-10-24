@@ -1,6 +1,7 @@
 <div *ngIf="hero">
   <h2>{{hero.name | uppercase}}</h2>
-  <div><span>id: </span>{{hero.id}}</div>
+  <div>
+    <span>id: </span>{{hero.id}}</div>
   <div>
     <label>name:
       <input [(ngModel)]="hero.name" placeholder="name">
@@ -9,3 +10,4 @@
 </div>
 
 <button (click)="goBack()">返回</button>
+<button (click)="save()" style="margin-left:10px">保存</button>

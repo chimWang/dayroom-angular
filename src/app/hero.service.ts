@@ -13,6 +13,8 @@ export class HeroService {
 
   private heroesUrl = 'api/heroes'
 
+
+
   constructor(
     private messageService: MessageService,
     private http: HttpClient
@@ -38,12 +40,6 @@ export class HeroService {
     this.messageService.add(`获取到英雄：${message}`)
   }
 
-  /**
- * Handle Http operation that failed.
- * Let the app continue.
- * @param operation - name of the operation that failed
- * @param result - optional value to return as the observable result
- */
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
@@ -56,5 +52,16 @@ export class HeroService {
       // Let the app keep running by returning an empty result.
       return of(result as T);
     }
+  }
+
+  /** PUT: update the hero on the server */
+  updateHero(hero: Hero): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+    return this.http.put(this.heroesUrl, hero, httpOptions).pipe(
+      tap(_ => this.log(`更新英雄的id为：${hero.id}`)),
+      catchError(this.handleError<any>('更新英雄'))
+    );
   }
 }
