@@ -3,5 +3,15 @@
     <a routerLink="/detail/{{hero.id}}">
       <span class="badge">{{hero.id}}</span> {{hero.name}}
     </a>
+    <button class="delete" title="delete hero"
+      (click)="delete(hero)">x</button>
   </li>
 </ul>
+<div>
+  <label>英雄名字:
+    <input #heroName />
+  </label>
+  <button (click)="add(heroName.value)" style="margin-left:10px">
+    添加英雄
+  </button>
+</div>
