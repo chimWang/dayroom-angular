@@ -90,7 +90,7 @@ export class HeroService {
       return of([]);
     }
     return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`).pipe(
-      tap(_ => this.log(`发现英雄 "${term}"`)),
+      tap(_ => this.log(`搜索英雄 "${term}"`)),
       catchError(this.handleError<Hero[]>('searchHeroes', []))
     );
   }
