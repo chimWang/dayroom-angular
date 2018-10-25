@@ -22,7 +22,7 @@ export class HeroService {
   constructor(
     private messageService: MessageService,
     private http: HttpClient
-  ) {}
+  ) { }
 
   getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl)
@@ -85,5 +85,14 @@ export class HeroService {
     );
   }
 
+  searchHeroes(term: string): Observable<Hero[]> {
+    if (!term.trim()) {
+      return of([]);
+    }
+    return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`).pipe(
+      tap(_ => this.log(`发现英雄 "${term}"`)),
+      catchError(this.handleError<Hero[]>('searchHeroes', []))
+    );
+  }
 
 }
