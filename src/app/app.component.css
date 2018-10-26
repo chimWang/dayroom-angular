@@ -29,3 +29,11 @@ h1 {
   nav a.active {
     color: #039be5;
   }
+
+  header{
+    line-height: 50px;
+    height: 50px;
+    background:#607d8b;
+    color: #fff;
+    padding-left: 20px;
+  }
