@@ -15,6 +15,8 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MyOwnCustomMaterialModule } from './myOwnCustomMaterial.module'
 
 @NgModule({
   imports: [
@@ -30,6 +32,8 @@ import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
       InMemoryDataService, { dataEncapsulation: false }
     ),
     NgZorroAntdModule,
+    BrowserAnimationsModule,
+    MyOwnCustomMaterialModule,
   ],
   declarations: [
     MessageComponent,
@@ -40,6 +44,6 @@ import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
     HeroSearchComponent,
   ],
   bootstrap: [AppComponent],
-  providers   : [ { provide: NZ_I18N, useValue: zh_CN } ]
+  providers: [{ provide: NZ_I18N, useValue: zh_CN }]
 })
 export class AppModule { }

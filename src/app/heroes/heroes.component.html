@@ -1,17 +1,16 @@
-<ul class="heroes">
-  <li *ngFor="let hero of heroes">
-    <a routerLink="/detail/{{hero.id}}">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
+<mat-list class="heroes">
+  <mat-list-item *ngFor="let hero of heroes">
+    <a routerLink="/detail/{{hero.id}}" matLine>
+      <span>{{hero.id}}</span> {{hero.name}}
     </a>
-    <button class="delete" title="delete hero"
-      (click)="delete(hero)">x</button>
-  </li>
-</ul>
-<div>
-  <label>英雄名字:
-    <input #heroName />
-  </label>
-  <button (click)="add(heroName.value)" style="margin-left:10px">
+    <button (click)="delete(hero)" mat-button>删除</button>
+  </mat-list-item>
+</mat-list>
+<form>
+  <mat-form-field>
+    <input matInput placeholder="英雄名字" #heroName>
+  </mat-form-field>
+  <button (click)="add(heroName.value)" style="margin-left:10px" mat-button>
     添加英雄
   </button>
-</div>
+</form>

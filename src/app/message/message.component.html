@@ -1,7 +1,10 @@
 <div style="padding-right: 50px">
-  <h2>消息：</h2>
-  <button class="clear" (click)="messageService.clear()">清除</button>
+  <h2>
+    <span matBadge={{messageService.messages.length}} matBadgeOverlap="false">消息</span>
+  </h2>
+ 
   <div *ngFor='let message of messageService.messages'>
     <div *ngIf="messageService.messages.length"> {{message}} </div>
   </div>
+  <button class="clear" (click)="messageService.clear()" mat-button>清除</button>
 </div>
