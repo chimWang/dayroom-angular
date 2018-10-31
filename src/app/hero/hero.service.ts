@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Hero } from './hero';
-import { HEROES } from './mock-heroes'
 import { Observable, of } from 'rxjs'
-import { MessageService } from './message.service';
+import { MessageService } from '../message/message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
@@ -17,7 +16,7 @@ const httpOptions = {
 
 export class HeroService {
 
-  private heroesUrl = 'api/heroes';
+  private heroesUrl = 'http://localhost:3000/heroes';
 
   constructor(
     private messageService: MessageService,
@@ -25,18 +24,18 @@ export class HeroService {
   ) { }
 
   getHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(this.heroesUrl)
+    return this.http.get<Hero[]>(this.heroesUrl+'/getHero')
       .pipe(
         tap(heroes => this.log('点击该英雄')),
         catchError(this.handleError('getHeroes', []))
       );
   }
 
-  getHero(id: number): Observable<Hero> {
-    const url = `${this.heroesUrl}/${id}`;
+  getHero(name: string): Observable<Hero> {
+    const url = `${this.heroesUrl}/${name}`;
     return this.http.get<Hero>(url).pipe(
-      tap(_ => this.log(`该英雄id为：${id}`)),
-      catchError(this.handleError<Hero>(`getHero id=${id}`))
+      tap(_ => this.log(`该英雄id为：${name}`)),
+      catchError(this.handleError<Hero>(`getHero id=${name}`))
     );
   }
 
@@ -61,22 +60,17 @@ export class HeroService {
   /** PUT: update the hero on the server */
   updateHero(hero: Hero): Observable<any> {
     return this.http.put(this.heroesUrl, hero, httpOptions).pipe(
-      tap(_ => this.log(`更新英雄的id为：${hero.id}`)),
+      tap(_ => this.log(`更新英雄的id为：${hero.name}`)),
       catchError(this.handleError<any>('更新英雄'))
     );
   }
 
 
-  addHero(hero: Hero): Observable<Hero> {
-    return this.http.post<Hero>(this.heroesUrl, hero, httpOptions).pipe(
-      tap((hero: Hero) => this.log(`添加英雄的id为：${hero.id}`)),
-      catchError(this.handleError<Hero>('addHero'))
-    );
-  }
+
 
 
   deleteHero(hero: Hero): Observable<Hero> {
-    const id = typeof hero === 'number' ? hero : hero.id;
+    const id = typeof hero === 'number' ? hero : hero.name;
     const url = `${this.heroesUrl}/${id}`;
 
     return this.http.delete<Hero>(url, httpOptions).pipe(
@@ -92,6 +86,13 @@ export class HeroService {
     return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`).pipe(
       tap(_ => this.log(`搜索英雄 "${term}"`)),
       catchError(this.handleError<Hero[]>('searchHeroes', []))
+    );
+  }
+
+  addHero(hero: Hero) {
+    return this.http.post(this.heroesUrl + '/createHero', hero, httpOptions).pipe(
+      tap(() => console.log('获取数据库数据成功')),
+
     );
   }
 

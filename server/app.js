@@ -5,16 +5,38 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+// var proxy = require('http-proxy-middleware');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-var movies = require('./routes/movies')
+var heroes = require('./routes/heroes')
 
 var app = express();
 
+//代理
+// var options = {
+//   target: 'http://localhost:8888',
+//   changeOrigin: true,
+//   pathRewrite: {
+//       '^/easyoffer' : 'http://localhost:8888/',
+//   }
+// };
+// var exampleProxy = proxy(options);  //开启代理功能，并加载配置
+// app.use('/',exampleProxy);//对地址为’/‘的请求全部转发
+
+//跨域
+app.all('*', function(req, res, next) {
+  var origin = typeof(req.headers.origin) == "undefined" ? "*" : req.headers.origin;
+  res.header("Access-Control-Allow-Origin", origin);
+  res.header("Access-Control-Allow-Credentials", true);
+  res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
 
 // connect to mongodb
-var url = 'mongodb://localhost:27017/movies'
+var url = 'mongodb://localhost:27017/heroes'
 mongoose.connect(url, { useNewUrlParser: true });
 mongoose.connection.on('error', function (err) {
   console.log('Mongo Error:' + err);
@@ -36,7 +58,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
-app.use('/add', movies);
+app.use('/heroes', heroes);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
