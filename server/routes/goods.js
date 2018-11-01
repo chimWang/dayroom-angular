@@ -24,4 +24,16 @@ router.post('/getGoodsByType', function (req, res, next) {
 
 });
 
+router.post('/getGoodDetail', function (req, res, next) {
+    Goods.find({ 'id': req.body.id }, function (err, doc) {
+        if (err) {
+            console.log(err.message)
+        } else {
+            res.send(JSON.stringify(doc));
+        }
+    })
+
+});
+
+
 module.exports = router;

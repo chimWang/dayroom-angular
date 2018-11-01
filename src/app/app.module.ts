@@ -11,10 +11,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DayroomComponent } from './dayroom/dayroom.component'
+import { DayroomComponent } from './dayroom/homePage/dayroom.component'
 
-import { MatButtonModule, MatListModule,MatInputModule,MatBadgeModule} from '@angular/material';
-import { DetailComponent } from './detail/detail.component';
+import { MatButtonModule, MatListModule,MatInputModule,MatBadgeModule,MatSelectModule} from '@angular/material';
+import { DetailComponent } from './dayroom/detail/detail.component';
 
 @NgModule({
   imports: [
@@ -28,7 +28,7 @@ import { DetailComponent } from './detail/detail.component';
     // ),
     NgZorroAntdModule,
     BrowserAnimationsModule,
-    [MatButtonModule, MatListModule,MatInputModule,MatBadgeModule]
+    [MatButtonModule, MatListModule,MatInputModule,MatBadgeModule,MatSelectModule]
   ],
   declarations: [
     AppComponent,

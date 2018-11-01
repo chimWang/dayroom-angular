@@ -27,4 +27,8 @@ export class DayroomServiceService {
     return this.http.post<any[]>(this.goodsUrl + '/getGoodsByType', { type: type }).pipe()
   }
 
+  getGoodDetail(id:string): Observable<any[]>{
+    return this.http.post<any[]>(this.goodsUrl + '/getGoodDetail', { id: id }).pipe()
+  }
+
 }
