@@ -9,18 +9,22 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class DayroomServiceService {
 
   private dayroomUrl = 'http://localhost:3000/menus'
-  private goodsUrl='http://localhost:3000/goods'
+  private goodsUrl = 'http://localhost:3000/goods'
 
   constructor(
     private http: HttpClient
   ) { }
 
-  getMenu():Observable<any[]>{
+  getMenu(): Observable<any[]> {
     return this.http.get<any[]>(this.dayroomUrl + '/getMenu').pipe()
   }
 
-  getGoods():Observable<any[]>{
+  getGoods(): Observable<any[]> {
     return this.http.get<any[]>(this.goodsUrl + '/getGoods').pipe()
+  }
+
+  getGoodsByType(type): Observable<any[]> {
+    return this.http.post<any[]>(this.goodsUrl + '/getGoodsByType', { type: type }).pipe()
   }
 
 }

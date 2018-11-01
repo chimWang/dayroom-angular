@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DayroomComponent } from './dayroom/dayroom.component'
 
 import { MatButtonModule, MatListModule,MatInputModule,MatBadgeModule} from '@angular/material';
+import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { MatButtonModule, MatListModule,MatInputModule,MatBadgeModule} from '@an
   declarations: [
     AppComponent,
     DayroomComponent,
+    DetailComponent,
   ],
   bootstrap: [AppComponent],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }]

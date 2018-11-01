@@ -13,4 +13,15 @@ router.get('/getGoods', function (req, res, next) {
 
 });
 
+router.post('/getGoodsByType', function (req, res, next) {
+    Goods.find({ 'type': req.body.type }, function (err, doc) {
+        if (err) {
+            console.log(err.message)
+        } else {
+            res.send(JSON.stringify(doc));
+        }
+    })
+
+});
+
 module.exports = router;

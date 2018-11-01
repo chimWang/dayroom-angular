@@ -26,4 +26,8 @@ export class DayroomComponent implements OnInit {
     this.dayroomService.getGoods().subscribe(goods => this.goods = goods)
   }
 
+  chooseType(type:string){
+    this.dayroomService.getGoodsByType(type).subscribe(goods => this.goods = goods)
+  }
+
 }
