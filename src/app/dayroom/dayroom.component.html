@@ -1,0 +1,26 @@
+<div class="banner"></div>
+<div class="container">
+
+    <div class="menu">
+        <ul>
+            <li *ngFor="let menu of menus">
+                <h3 matBadge={{menu.count}} matBadgeOverlap="false" matBadgeSize="small">{{menu.name}}</h3>
+            </li>
+        </ul>
+    </div>
+    <div class="good-list">
+        <h3 class="look">商品详情：<i class="iconfont icon-handoup" style="font-size: large"></i></h3>
+        <ul>
+            <li *ngFor="let good of goods">
+                <div class="goodImg">
+                    <img src={{good.img}}>
+                    <div class="mask">
+                        <h4>{{good.name}}</h4>
+                        <h5>{{good.price}}</h5>
+                    </div>
+                </div>
+
+            </li>
+        </ul>
+    </div>
+</div>

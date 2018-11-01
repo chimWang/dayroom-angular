@@ -10,6 +10,8 @@ var mongoose = require('mongoose');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var heroes = require('./routes/heroes')
+var menus = require('./routes/menus')
+var goods = require('./routes/goods')
 
 var app = express();
 
@@ -36,7 +38,7 @@ app.all('*', function(req, res, next) {
 });
 
 // connect to mongodb
-var url = 'mongodb://localhost:27017/heroes'
+var url = 'mongodb://localhost:27017/dayroom'
 mongoose.connect(url, { useNewUrlParser: true });
 mongoose.connection.on('error', function (err) {
   console.log('Mongo Error:' + err);
@@ -59,6 +61,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/heroes', heroes);
+app.use('/menus', menus);
+app.use('/goods', goods);
 
 
 // catch 404 and forward to error handler

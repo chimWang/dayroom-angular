@@ -8,14 +8,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
-import { MessageComponent } from './message/message.component'
 import { AppComponent } from './app.component';
-import { HeroDetailComponent } from './hero/hero-detail/hero-detail.component';
-import { HeroesComponent } from './hero/heroes/heroes.component';
-import { HeroSearchComponent } from './hero/hero-search/hero-search.component';
 import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MyOwnCustomMaterialModule } from './myOwnCustomMaterial.module'
+import { DayroomComponent } from './dayroom/dayroom.component'
+
+import { MatButtonModule, MatListModule,MatInputModule,MatBadgeModule} from '@angular/material';
 
 @NgModule({
   imports: [
@@ -29,14 +27,11 @@ import { MyOwnCustomMaterialModule } from './myOwnCustomMaterial.module'
     // ),
     NgZorroAntdModule,
     BrowserAnimationsModule,
-    MyOwnCustomMaterialModule,
+    [MatButtonModule, MatListModule,MatInputModule,MatBadgeModule]
   ],
   declarations: [
-    MessageComponent,
     AppComponent,
-    HeroesComponent,
-    HeroDetailComponent,
-    HeroSearchComponent,
+    DayroomComponent,
   ],
   bootstrap: [AppComponent],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }]
