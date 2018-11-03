@@ -11,6 +11,7 @@ export interface Food {
   styleUrls: ['./detail.component.less']
 })
 
+
 export class DetailComponent implements OnInit {
   counts: Food[] = [
     { value: 1, viewValue: 1 },
@@ -31,6 +32,10 @@ export class DetailComponent implements OnInit {
   getGood() {
     const id = this.route.snapshot.paramMap.get('id');
     this.dayroomService.getGoodDetail(id).subscribe(goodDetail => this.goodDetail = goodDetail[0])
+  }
+
+  intoBag(goods:object){
+    this.dayroomService.intoBag(goods).subscribe()
   }
 
 }
