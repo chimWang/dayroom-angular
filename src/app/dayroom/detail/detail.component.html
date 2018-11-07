@@ -5,16 +5,16 @@
     <div class="detail-text">
         <div class="content">
             <p>{{goodDetail.desc}}</p>
-            <div>
+            <!-- <div>
                 <mat-form-field>
-                    <mat-select placeholder="购买数量">
+                    <mat-select placeholder="购买数量" [(value)]="selected">
                         <mat-option *ngFor="let count of counts" [value]="count.value">
                             {{count.viewValue}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
-            </div>
-            <button mat-button (click)=intoBag()>加入购物车</button>
+            </div> -->
+            <button mat-button (click)=intoBag(goodDetail)>加入购物车</button>
         </div>
     </div>
 </div>

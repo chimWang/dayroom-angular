@@ -7,9 +7,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 // var proxy = require('http-proxy-middleware');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
-var heroes = require('./routes/heroes')
+
 var menus = require('./routes/menus')
 var goods = require('./routes/goods')
 
@@ -58,9 +56,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/users', users);
-app.use('/heroes', heroes);
 app.use('/menus', menus);
 app.use('/goods', goods);
 

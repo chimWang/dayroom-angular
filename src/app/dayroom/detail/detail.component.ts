@@ -8,7 +8,7 @@ export interface Food {
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.less']
+  styleUrls: ['./detail.component.less'],
 })
 
 
@@ -23,7 +23,9 @@ export class DetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private dayroomService: DayroomServiceService
-  ) { }
+  ) {
+  
+  }
 
   ngOnInit() {
     this.getGood()
@@ -34,8 +36,11 @@ export class DetailComponent implements OnInit {
     this.dayroomService.getGoodDetail(id).subscribe(goodDetail => this.goodDetail = goodDetail[0])
   }
 
-  intoBag(goods:object){
-    this.dayroomService.intoBag(goods).subscribe()
+  intoBag(goods, selected: number) {
+    goods.orders = selected;
+    this.dayroomService.intoBag().subscribe(() => {
+     }
+    )
   }
 
 }

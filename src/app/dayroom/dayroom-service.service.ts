@@ -7,10 +7,9 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class DayroomServiceService {
-
   private dayroomUrl = 'http://localhost:3000/menus'
   private goodsUrl = 'http://localhost:3000/goods'
-
+  message=0
   constructor(
     private http: HttpClient
   ) { }
@@ -27,12 +26,25 @@ export class DayroomServiceService {
     return this.http.post<any[]>(this.goodsUrl + '/getGoodsByType', { type: type }).pipe()
   }
 
-  getGoodDetail(id:string): Observable<any[]>{
+  getGoodDetail(id: string): Observable<any[]> {
     return this.http.post<any[]>(this.goodsUrl + '/getGoodDetail', { id: id }).pipe()
   }
 
-  intoBag(goods): Observable<any[]>{
-    return this.http.post<any[]>(this.goodsUrl + '/intoBag', goods).pipe()
+  intoBag(): Observable<any[]> {
+    return this.http.get<any[]>(this.goodsUrl + '/getGoods').pipe(
+      tap(()=>this.message++)
+    )
+    // return this.http.post<any[]>(this.goodsUrl + '/intoBag', {}).pipe(
+    
+    // )
   }
 
+  getBag(): Observable<any[]> {
+    return this.http.get<any[]>(this.goodsUrl + '/getBags').pipe(
+    )
+  }
+
+  getMessage(){
+    return this.message
+  }
 }
