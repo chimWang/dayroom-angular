@@ -30,13 +30,13 @@ export class DayroomServiceService {
     return this.http.post<any[]>(this.goodsUrl + '/getGoodDetail', { id: id }).pipe()
   }
 
-  intoBag(): Observable<any[]> {
-    return this.http.get<any[]>(this.goodsUrl + '/getGoods').pipe(
+  intoBag(goods): Observable<any[]> {
+    // return this.http.get<any[]>(this.goodsUrl + '/getGoods').pipe(
+      
+    // )
+    return this.http.post<any[]>(this.goodsUrl + '/intoBag', goods).pipe(
       tap(()=>this.message++)
     )
-    // return this.http.post<any[]>(this.goodsUrl + '/intoBag', {}).pipe(
-    
-    // )
   }
 
   getBag(): Observable<any[]> {

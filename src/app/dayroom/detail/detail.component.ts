@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DayroomServiceService } from '../dayroom-service.service'
 import { ActivatedRoute } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd';
 export interface Food {
   value: number;
   viewValue: number;
@@ -22,13 +23,15 @@ export class DetailComponent implements OnInit {
   goodDetail = {}
   constructor(
     private route: ActivatedRoute,
-    private dayroomService: DayroomServiceService
+    private dayroomService: DayroomServiceService,
+    private message: NzMessageService
   ) {
-  
+
   }
 
   ngOnInit() {
     this.getGood()
+
   }
 
   getGood() {
@@ -38,8 +41,9 @@ export class DetailComponent implements OnInit {
 
   intoBag(goods, selected: number) {
     goods.orders = selected;
-    this.dayroomService.intoBag().subscribe(() => {
-     }
+    this.dayroomService.intoBag(goods).subscribe(() => {
+      this.message.create('success', '已添加至购物车')
+    }
     )
   }
 

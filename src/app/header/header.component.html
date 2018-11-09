@@ -1,12 +1,16 @@
 <header>
     <div>
-     
+
         <h3>
             <i class="iconfont icon-tubiao11"></i>
         </h3>
 
         <h3>
-            <i class="iconfont icon-gouwuche" matBadge="{{this.dayroomService.getMessage()}}" matBadgeOverlap="false"></i>
+            <a routerLink="/bag" href="javascript:;">
+                <i class="iconfont icon-gouwuche" matBadge="{{this.bagList.length+this.dayroomService.message}}" matBadgeOverlap="false"
+                    [matBadgeHidden]="this.bagList.length===0"></i>
+            </a>
+
         </h3>
     </div>
 </header>

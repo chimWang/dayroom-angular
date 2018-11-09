@@ -41,7 +41,7 @@ router.post('/intoBag', function (req, res, next) {
         if (err) {
             console.log(err.message)
         } else {
-            console.log('success')
+            res.send('6666666');
         }
       })
 });

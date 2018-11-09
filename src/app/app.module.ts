@@ -16,6 +16,7 @@ import { DayroomComponent } from './dayroom/homePage/dayroom.component'
 import { MatButtonModule, MatListModule,MatInputModule,MatBadgeModule,MatSelectModule} from '@angular/material';
 import { DetailComponent } from './dayroom/detail/detail.component';
 import { HeaderComponent } from './header/header.component';
+import { BagComponent } from './dayroom/bag/bag.component';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { HeaderComponent } from './header/header.component';
     DayroomComponent,
     DetailComponent,
     HeaderComponent,
+    BagComponent,
   ],
   bootstrap: [AppComponent],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }]
