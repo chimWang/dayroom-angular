@@ -28,7 +28,7 @@
               }
             ],
             "styles": [
-              "src/styles.less",
+              "src/styles/common.less",
               "node_modules/ng-zorro-antd/ng-zorro-antd.min.css"
             ],
             "scripts": []

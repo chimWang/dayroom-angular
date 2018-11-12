@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DayroomServiceService } from '../dayroom-service.service'
 import { ActivatedRoute } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd';
-export interface Food {
+export interface Good {
   value: number;
   viewValue: number;
 }
@@ -14,7 +14,7 @@ export interface Food {
 
 
 export class DetailComponent implements OnInit {
-  counts: Food[] = [
+  counts: Good[] = [
     { value: 1, viewValue: 1 },
     { value: 2, viewValue: 2 },
     { value: 3, viewValue: 3 },

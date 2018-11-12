@@ -6,7 +6,7 @@ var goodSchema = new Schema({
     id: String,
     name: String,
     count: Number,
-    price: String,
+    price: Number,
     type: String,
     img: String
 });

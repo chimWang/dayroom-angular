@@ -1,1 +1,23 @@
-<div></div>
+<div class="bag">
+    <ul>
+        <li *ngFor="let goods of bagList">
+            <div>
+                <i class="iconfont icon-handoup"></i>
+            </div>
+            <img src="{{goods.img}}" />
+            <h3>{{goods.name}}</h3>
+            <h3>个数：{{goods.orders}}</h3>
+            <h3>￥{{goods.price}}</h3>
+        </li>
+    </ul>
+    <div class="buy">
+        <div>
+            <h4>
+                <i class="iconfont icon-qian"></i>总计：￥{{totalPrice}}
+            </h4>
+            <button class="button">购买</button>
+        </div>
+
+    </div>
+
+</div>
